@@ -78,10 +78,10 @@ const handleSubmit = (e) => {
       <div className="w-full xl:w-3/4 lg:w- flex">
         <div
           className="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
-          style={{backgroundImage: "url('https://source.unsplash.com/K4mSJ7kc0As/600x800')"}}></div>
-        <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
+          style={{backgroundImage: "url('https://source.unsplash.com/Ne4ndPUwe08/600x800')"}}></div>
+        <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none  bg-gray-400">
           <h3 className="pt-4 text-2xl text-center">Welcome To DermaCam!</h3>
-          <form onSubmit={handleSubmit} className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+          <form onSubmit={handleSubmit} className="px-8 pt-6 pb-8 mb-4 bg-white rounded  bg-gray-400">
             <div className="mb-4">
               <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="email">
                 Email
@@ -145,7 +145,7 @@ const handleSubmit = (e) => {
             <hr className="mb-6 border-t" />
             <div className="text-center">
               <a
-                className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                className="inline-block text-sm text-black-500 align-baseline hover:text-blue-800"
                 href="./register.html"
               >
                 Create an Account!
@@ -153,7 +153,7 @@ const handleSubmit = (e) => {
             </div>
             <div className="text-center">
               <a
-                className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                className="inline-block text-sm text-black-500 align-baseline hover:text-blue-800"
                 href="./forgot-password.html"
               >
                 Forgot Password?
