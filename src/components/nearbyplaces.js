@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-
+import axios from "axios";
 const NearByPlaces = () =>{
     const result ={"result":[
               {
@@ -965,6 +965,12 @@ const NearByPlaces = () =>{
         }
         setOffset((pageNo - 1) * maxLimit);
     };
+    const handleSubmit = async(place_id) => {
+      let params = {key:process.env.REACT_APP_GOOGLE_API,place_id:place_id}
+      let result = await axios.get("https://maps.googleapis.com/maps/api/place/details/json",{params:params})
+      console.log(result.data.result.url)
+      window.open(result.data.result.url, "_blank")
+    }
     const [pageNumbers, setPagenumbers] = useState(getPageNumbers(1));
     return(
         <div className="w-full flex flex-col gap-2 justify-center items-center">
@@ -998,7 +1004,7 @@ const NearByPlaces = () =>{
                             </div>
                         </div>
                         <div className="py-4">
-                            <a href={`https://www.google.com/maps/place/?place_id=${item.place_id}&key=AIzaSyBYkqutku5mDQk8tfLlv2ewKOkY1nyNGaU`} className="block tracking-widest uppercase text-center shadow bg-indigo-600 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Open in maps</a>
+                            <a href="#.com" onClick={() => handleSubmit(`${item.place_id}`)} className="block tracking-widest uppercase text-center shadow bg-indigo-600 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Open in maps</a>
                         </div>
                     </div>
                 </div>

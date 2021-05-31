@@ -47,7 +47,7 @@ const handleSubmit = (e) => {
               const { status: statusCode } = resp;
               console.log(res,statusCode)
 
-              if (res && statusCode === 201) {
+              if (res && statusCode === 200) {
                   // localStorage.setItem(
                   //     "login_access_token",
                   //     res.access_token
@@ -58,10 +58,7 @@ const handleSubmit = (e) => {
                   //     navigate("/");
                   // }
                   window.location.reload();
-              } else {
-                  setFormError("Check your email and password");
-                  setFormLoading(false);
-              }
+              } 
           })
           .catch((err) => {
               Notficiation.Error({
