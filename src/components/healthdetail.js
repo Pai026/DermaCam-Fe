@@ -1,13 +1,5 @@
-import React,{useState} from "react";
+import React from "react";
 const HealthDetail = () => {
-    const [allergies,setAllergies] = useState(["turmeric","alumminium compounds"])
-    const removeItem = (item) => {
-        allergies.filter(function(ele){ 
-            return ele !== item; 
-        });
-        console.log(allergies)
-        setAllergies(allergies)
-    }
     return (
         <div class="my-8 ml-auto mr-auto">
         <div class="pb-6 md:pb-0 flex flex-col">
