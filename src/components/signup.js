@@ -1,12 +1,18 @@
+
 import React,{useState} from 'react';
 import { useDispatch } from "react-redux"
-import { postLogin } from "../Redux/actions";
+import { postRegister } from "../Redux/actions";
 import * as Notficiation from "../util/Notifications";
-import {navigate} from "hookrouter"
-const Logapp = () =>{
-  const initForm = {
-    email: "",
-    password: "",
+const Signup = () => {
+    const initForm = {
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "lat": "10.027760",
+      "long": "76.275047",
+      "password": "",
+      "confirmPassword": ""
+     
 };
 const dispatch = useDispatch();
 const [formLoading, setFormLoading] = useState(false);
@@ -29,6 +35,11 @@ function validateInputs() {
       err = "email id. / Password is empty";
       formValid = false;
   }
+  if (form.password !== form.confirmPassword)
+  {
+    err = "Password and confirm Password do not match";
+    formValid= false;
+  }
   setFormError(err);
   return formValid;
 }
@@ -40,22 +51,26 @@ const handleSubmit = (e) => {
   if (valid && !formLoading) {
       setFormLoading(true);
 
-      dispatch(postLogin(form))
+      dispatch(postRegister(form))
           .then((resp) => {
             console.log(resp)
               const { data: res } = resp;
               const { status: statusCode } = resp;
               console.log(res,statusCode)
 
-              if (res && statusCode === 200) {
-                  localStorage.setItem(
-                      "login_access_token",
-                      res.token
-                  );
-                      console.log("hello")
-                      navigate("/nearbydoc");
-                      window.location.reload()
-              } 
+              if (res && statusCode === 201) {
+                  // localStorage.setItem(
+                  //     "login_access_token",
+                  //     res.access_token
+                  // );
+                  // if (queryParams && queryParams.redirect) {
+                  //     navigate(queryParams.redirect);
+                  // } else {
+                  //     navigate("/");
+                  // }
+                  window.location.reload();
+              }
+            
           })
           .catch((err) => {
               Notficiation.Error({
@@ -64,18 +79,46 @@ const handleSubmit = (e) => {
           });
   }
 };
-
-  return(
+return(
     <div className="container mx-auto">
     <div className="flex justify-center px-6 my-12">
       
-      <div className="w-full xl:w-3/4 lg:w- flex">
+      <div className="flex w-full xl:w-3/4 lg:w-">
         <div
-          className="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
+          className="hidden w-full h-auto bg-gray-400 bg-cover rounded-l-lg lg:block lg:w-1/2"
           style={{backgroundImage: "url('https://source.unsplash.com/Ne4ndPUwe08/600x800')"}}></div>
-        <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none  bg-gray-400">
+        <div className="w-full p-5 bg-white bg-gray-400 rounded-lg lg:w-1/2 lg:rounded-l-none">
           <h3 className="pt-4 text-2xl text-center">Welcome To DermaCam!</h3>
-          <form onSubmit={handleSubmit} className="px-8 pt-6 pb-8 mb-4 bg-white rounded  bg-gray-400">
+          <form onSubmit={handleSubmit} className="px-8 pt-6 pb-8 mb-4 bg-white bg-gray-400 rounded">
+
+          <div className="mb-4">
+              <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="email">
+                Firstname
+              </label>
+              <input
+                className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                id="FirstName"
+                name="firstName"
+                type="text"
+                placeholder="FirstName"
+                value={form.firstName}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="email">
+                Lastname
+              </label>
+              <input
+                className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                id="LastName"
+                name="lastName"
+                type="text"
+                placeholder="lastName"
+                value={form.lastName}
+                onChange={handleChange}
+              />
+            </div>
             <div className="mb-4">
               <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="email">
                 Email
@@ -95,7 +138,7 @@ const handleSubmit = (e) => {
                 Password
               </label>
               <input
-                className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border  rounded shadow appearance-none focus:outline-none focus:shadow-outline" //border-red-500 for error
+                className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" //border-red-500 for error
                 id="password"
                 name="password"
                 type="password"
@@ -106,11 +149,21 @@ const handleSubmit = (e) => {
               <p className="text-xs italic text-red-500">{formError}</p>
             </div>
             <div className="mb-4">
-              <input className="mr-2 leading-tight" type="checkbox" id="checkbox_id" />
-              <label className="text-sm" htmlFor="checkbox_id">
-                Remember Me
+              <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="password">
+                RetypePassword
               </label>
+              <input
+                className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" //border-red-500 for error
+                id="password"
+                name="confirmPassword"
+                type="password"
+                value={form.confirmPassword}
+                onChange={handleChange}
+                placeholder="******************"
+              />
+              <p className="text-xs italic text-red-500">{formError}</p>
             </div>
+            
             <div className="mb-6 text-center">
             <button
                             type="submit"
@@ -133,32 +186,25 @@ const handleSubmit = (e) => {
                                     clipRule="evenodd"
                                 />
                             </svg>
-                            Sign In
+                            Sign Up
                         </button>
             </div>
             <hr className="mb-6 border-t" />
             <div className="text-center">
               <a
-                className="inline-block text-sm text-black-500 align-baseline hover:text-blue-800"
+                className="inline-block text-sm align-baseline text-black-500 hover:text-blue-800"
                 href="./register.html"
               >
-                Create an Account!
+                Login to Account!
               </a>
             </div>
-            <div className="text-center">
-              <a
-                className="inline-block text-sm text-black-500 align-baseline hover:text-blue-800"
-                href="./forgot-password.html"
-              >
-                Forgot Password?
-              </a>
-            </div>
+            
           </form>
         </div>
       </div>
     </div>
   </div>
   )
-}
 
-  export default Logapp
+}
+export default Signup;

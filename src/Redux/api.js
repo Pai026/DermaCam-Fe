@@ -5,4 +5,14 @@ export default {
         method: "POST",
         noAuth: true,
     },
+    register: {
+        path: "/user/register",
+        method: "POST",
+        noAuth: true,
+    },
+    currentUser: {
+        path: "/user/getUser",
+        method: "GET",
+        noAuth: false
+    }
 };
