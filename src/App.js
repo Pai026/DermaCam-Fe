@@ -15,12 +15,12 @@ function App() {
     useAbortableEffect(
         async (status) => {
             const access = localStorage.getItem("login_access_token");
-            console.log(access)
+            
             if (access) {
                 const res = await dispatch(getCurrentUser());
-                console.log(res)
+                
                 if (res) {
-                    console.log("hello")
+                    
                     setUser(res.data);
                 }
             } else {
@@ -33,7 +33,7 @@ function App() {
         return <FullLoading />;
     }
     if (currentUser && currentUser.data) {
-        console.log(currentUser)
+        
         return <CustomerRouter/>;
     }
     else{

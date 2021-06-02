@@ -1,9 +1,37 @@
 import React  from 'react';
 import img from "../Assets/icon.png";
+import {navigate} from "hookrouter"
 const Sidenav =() =>{
+  const toggleMenu = () => {
+    const navToggle = document.getElementsByClassName("toggle");
+    for (let i = 0; i < navToggle.length; i++) {
+        navToggle.item(i).classList.toggle("hidden");
+    }
+};
     return(
 <div>
-      <nav className="flex flex-col w-64 h-screen px-4 bg-purple-900 border border-purple-900 tex-gray-900">
+      <nav className="flex flex-col w-64 h-screen px-4 bg-transparent md:bg-purple-900 md:border md:border-purple-900 tex-gray-900">
+      <div className="block lg:hidden py-6 pr-6">
+                <div className="flex md:hidden">
+                    <button id="hamburger" onClick={toggleMenu}>
+                        <img
+                            alt=""
+                            className="toggle block"
+                            src="https://img.icons8.com/fluent-systems-regular/2x/menu-squared-2.png"
+                            width="40"
+                            height="40"
+                        />
+                        <img
+                            alt="menu hidden"
+                            className="toggle hidden"
+                            src="https://img.icons8.com/fluent-systems-regular/2x/close-window.png"
+                            width="40"
+                            height="40"
+                        />
+                    </button>
+                </div>
+                 </div>
+        <div className="toggle hidden md:block bg-purple-900">
         <div className="flex flex-wrap mt-8">
           <div className="w-1/2 ml-auto mr-auto">
             <img
@@ -25,9 +53,12 @@ const Sidenav =() =>{
                   ></path>
                 </svg>
               </span>
-              <a href="#">
-                <span className="ml-2">Dashboard</span>
-              </a>
+              
+                <span onClick={()=>{
+                  navigate("/nearbydoc");
+                  window.location.reload();
+                }} className="cursor-pointer ml-2">Search For Doctors</span>
+              
             </li>
             <li className="flex flex-row px-4 py-4 mb-2 text-gray-100 border-gray-300 rounded rounded-lg hover:text-black hover:bg-gray-300 hover:font-bold">
               <span>
@@ -49,10 +80,10 @@ const Sidenav =() =>{
                   />
                 </svg>
               </span>
-              <a href="#">
+              
                
-                <span className="ml-2">Upload Image</span>
-              </a>
+                <span className="cursor-pointer ml-2">Upload Image</span>
+              
             </li>
             <li className="flex flex-row px-4 py-4 mb-2 text-gray-100 border-gray-300 rounded rounded-lg hover:text-black hover:bg-gray-300 hover:font-bold">
               <span>
@@ -64,10 +95,13 @@ const Sidenav =() =>{
                   ></path>
                 </svg>
               </span>
-              <a href="#">
+            
                
-                <span className="ml-2">Search Doctor</span>
-              </a>
+                <span onClick={() => {
+                  navigate('/healthdetails');
+                  window.location.reload();
+                }} className="cursor-pointer ml-2">Health Details</span>
+              
             </li>
             <li className="flex flex-row px-4 py-4 mb-2 text-gray-100 border-gray-300 rounded rounded-lg hover:text-black hover:bg-gray-300 hover:font-bold">
               <span>
@@ -79,9 +113,10 @@ const Sidenav =() =>{
                   ></path>
                 </svg>
               </span>
-              <a href="#">
-                <span className="ml-2">Health Details</span>
-              </a>
+                <span onClick={() => {
+                  navigate('/products');
+                  window.location.reload();
+                }} className="cursor-pointer ml-2">Products</span>
             </li>
             <li className="flex flex-row px-4 py-4 mb-2 text-gray-100 border-gray-300 rounded rounded-lg hover:text-black hover:bg-gray-300 hover:font-bold">
               <span>
@@ -93,12 +128,25 @@ const Sidenav =() =>{
                   ></path>
                 </svg>
               </span>
-              <a href="#">
-                <span className="ml-2">Products</span>
-              </a>
+              <p onClick={() => {
+                                                    localStorage.removeItem(
+                                                        "login_access_token"
+                                                    );
+                                                    navigate("/login");
+                                                    window.location.reload();
+                                                    }}>
+                <span onClick={() => {
+                                                    localStorage.removeItem(
+                                                        "login_access_token"
+                                                    );
+                                                    navigate("/login");
+                                                    window.location.reload();
+                                                    }} className="cursor-pointer ml-2">Sign Out</span>
+              </p>
             </li>
             
           </ul>
+        </div>
         </div>
       </nav>
     </div>

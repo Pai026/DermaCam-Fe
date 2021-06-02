@@ -42,17 +42,17 @@ const handleSubmit = (e) => {
 
       dispatch(postLogin(form))
           .then((resp) => {
-            console.log(resp)
+            
               const { data: res } = resp;
               const { status: statusCode } = resp;
-              console.log(res,statusCode)
+              
 
               if (res && statusCode === 200) {
                   localStorage.setItem(
                       "login_access_token",
                       res.token
                   );
-                      console.log("hello")
+                      
                       navigate("/nearbydoc");
                       window.location.reload()
               } 

@@ -1064,26 +1064,26 @@ const NearByPlaces = () =>{
     };
     const [pageNumbers, setPagenumbers] = useState(getPageNumbers(1));
     return(
-        <div className="w-full flex flex-col gap-2 justify-center items-center">
+        <div className="w-max-prose md:w-full flex flex-col gap-2 justify-center items-center">
         {result.results.slice(offset, offset+maxLimit).map((item) => {
             return(
-                <div key={item.place_id} className='w-5/12 h-max bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
+                <div key={item.place_id} className='w-max-prose md:w-5/12 h-max bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
                     <div className="py-4 px-8 mt-3">
                         <div className="flex flex-col mb-8">
-                            <h2 className="text-gray-700 font-semibold text-2xl tracking-wide mb-2">{item.name}</h2>
+                            <h2 className="text-gray-700 font-semibold text-sm md:text-2xl tracking-wide mb-2">{item.name}</h2>
                             <p className="text-gray-500 text-base">{item.formatted_address}</p>
                         </div>
                         <div className="bg-gray-100 max-w-prose rounded-lg">
                             <div className="py-4 px-4">
                                 <div className="flex flex-col">
-                                    <h4 className="text-lg font-semibold mb-3">Stats</h4>
+                                    <h4 className="text-sm md:text-lg font-semibold mb-3">Stats</h4>
                                     <div className="flex flex-col  text-sm text-gray-500">
                                         {item.hasOwnProperty('opening_hours')?<span className={` ${
                                             item.opening_hours.open_now === true 
-                                                ? "bg-green-600 hover:bg-green-700 text-white w-28 text-sm px-4 py-2  border rounded-full"
-                                                : "bg-red-600 hover:bg-red-700 text-white w-28 text-sm px-4 py-2  border rounded-full"}`}>Open now</span>
+                                                ? "bg-green-600 hover:bg-green-700 text-white w-28 text-xs md:text-sm px-4 py-2  border rounded-full"
+                                                : "bg-red-600 hover:bg-red-700 text-white w-28 text-xs md:text-sm px-4 py-2  border rounded-full"}`}>Open now</span>
                                             :
-                                            <span className="bg-red-600 hover:bg-red-700 text-white w-28 text-sm px-4 py-2  border rounded-full">
+                                            <span className="bg-red-600 hover:bg-red-700 text-white w-28 text-xs md:text-sm px-4 py-2  border rounded-full">
                                                 No data
                                             </span> 
                                             }

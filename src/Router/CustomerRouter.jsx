@@ -2,8 +2,13 @@ import React from "react";
 import { useRoutes,useRedirect } from "hookrouter";
 import Sidenav from "../components/sidenav";
 import NearByPlaces from "../components/nearbyplaces";
+import HealthDetail from "../components/healthdetail";
+import Products from "../components/products";
+
 const routes = {
     "/nearbydoc": () => <NearByPlaces />,
+    "/healthdetails": () => <HealthDetail />,
+    "/products" : () => <Products/>,
 };
 // const links = 
 //     [
@@ -15,10 +20,11 @@ const routes = {
 //     ];
 
 const CustomerRouter = () => {
+    
     useRedirect("/", "/nearbydoc");
     useRedirect("/login","/nearbydoc");
     const pages = useRoutes(routes);
-
+    
     return (
         <div className="">
             {!pages ? (
