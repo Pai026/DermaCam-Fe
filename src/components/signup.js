@@ -1,4 +1,5 @@
 
+import { navigate } from 'hookrouter';
 import React,{useState} from 'react';
 import { useDispatch } from "react-redux"
 import { postRegister } from "../Redux/actions";
@@ -53,21 +54,11 @@ const handleSubmit = (e) => {
 
       dispatch(postRegister(form))
           .then((resp) => {
-            console.log(resp)
               const { data: res } = resp;
               const { status: statusCode } = resp;
-              console.log(res,statusCode)
 
-              if (res && statusCode === 201) {
-                  // localStorage.setItem(
-                  //     "login_access_token",
-                  //     res.access_token
-                  // );
-                  // if (queryParams && queryParams.redirect) {
-                  //     navigate(queryParams.redirect);
-                  // } else {
-                  //     navigate("/");
-                  // }
+              if (res) {
+                  navigate('/login')
                   window.location.reload();
               }
             

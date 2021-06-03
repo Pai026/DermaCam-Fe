@@ -6,14 +6,17 @@ const HealthDetail = () => {
             others:""
     }
     const [form,setForm]= useState(initForm)
+    const removeItem = (e) => {
+        const fieldValue = {...form}
+        fieldValue[e.target.name] = fieldValue[e.target.name].filter((item) => item !== e.target.innerHTML);
+        setForm(fieldValue)
+    }
     const handleEnter = (e) => {
             if(e.key === 'Enter')
             {
-                    console.log("Enter Pressed")
                     const fieldValue = { ...form };
                     fieldValue[e.target.name]=[...fieldValue[e.target.name],e.target.value]
                     setForm(fieldValue)
-                    console.log(form[e.target.name])
                     e.target.value=""
             }
             
@@ -52,7 +55,7 @@ const HealthDetail = () => {
         <div class="flex flex-wrap overflow-hidden">
         {form.allergies.map((item1)=>{
            return (<div key={item1}>
-              <button className="h-6 md:h-12 w-full inline-block md:text-sm text-xs bg-gray-300 hover:bg-blue text-blue-dark font-semibold hover:text-black py-2 px-4 border border-blue hover:border-transparent rounded-full">
+              <button name="allergies" onClick={removeItem} className="h-6 md:h-12 w-full inline-block md:text-sm text-xs bg-gray-300 hover:bg-blue text-blue-dark font-semibold hover:text-black py-2 px-4 border border-blue hover:border-transparent rounded-full">
                   {item1}
               </button>
           </div>)
@@ -61,11 +64,11 @@ const HealthDetail = () => {
         </div>:<div className="hidden"></div>}
         {form.medications.length>0?
         <div className="mt-5">
-        <label htmlFor="Allergies" className="input-label text-base mb-2">Medications</label>
+        <label htmlFor="Medications" className="input-label text-base mb-2">Medications</label>
         <div class="flex flex-wrap overflow-hidden">
         {form.medications.map((item1)=>{
            return (<div key={item1}>
-              <button className="h-6 md:h-12 w-full inline-block md:text-sm text-xs bg-gray-300 hover:bg-blue text-blue-dark font-semibold hover:text-black py-2 px-4 border border-blue hover:border-transparent rounded-full">
+              <button name="medications" onClick={removeItem} className="h-6 md:h-12 w-full inline-block md:text-sm text-xs bg-gray-300 hover:bg-blue text-blue-dark font-semibold hover:text-black py-2 px-4 border border-blue hover:border-transparent rounded-full">
                   {item1}
               </button>
           </div>)
