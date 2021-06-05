@@ -14,5 +14,10 @@ export default {
         path: "/user/getUser",
         method: "GET",
         noAuth: false
+    },
+    uploadImage: {
+        path: "/uploadImage",
+        method: "POST",
+        noAuth: true
     }
 };

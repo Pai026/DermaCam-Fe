@@ -10,4 +10,8 @@ export const postRegister = (form) => {
 
 export const getCurrentUser = () => {
     return fireRequest("currentUser")
+};
+
+export const uploadImage = (form) => {
+    return fireRequest("uploadImage",[],form,"",true)
 }

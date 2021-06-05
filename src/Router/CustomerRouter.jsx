@@ -4,11 +4,13 @@ import Sidenav from "../components/sidenav";
 import NearByPlaces from "../components/nearbyplaces";
 import HealthDetail from "../components/healthdetail";
 import Products from "../components/products";
+import UploadImage from "../components/uploadimage";
 
 const routes = {
     "/nearbydoc": () => <NearByPlaces />,
     "/healthdetails": () => <HealthDetail />,
     "/products" : () => <Products/>,
+    "/uploadImage": () => <UploadImage/>,
 };
 // const links = 
 //     [

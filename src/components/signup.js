@@ -55,8 +55,6 @@ const handleSubmit = (e) => {
       dispatch(postRegister(form))
           .then((resp) => {
               const { data: res } = resp;
-              const { status: statusCode } = resp;
-
               if (res) {
                   navigate('/login')
                   window.location.reload();
