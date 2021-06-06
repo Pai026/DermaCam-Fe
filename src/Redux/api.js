@@ -16,7 +16,7 @@ export default {
         noAuth: false
     },
     uploadImage: {
-        path: "/uploadImage",
+        path: "/user/uploadImage",
         method: "POST",
         noAuth: true
     }
