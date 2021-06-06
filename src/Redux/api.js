@@ -20,4 +20,19 @@ export default {
     method: "POST",
     noAuth: true,
   },
+  getHealthDetails: {
+    path: "/user/userHealthDetail",
+    method: "GET",
+    noAuth: false,
+  },
+  addHealthDetails: {
+    path: "/user/patientHealthDetails",
+    method: "POST",
+    noAuth: false,
+  },
+  findNearbyDoctors: {
+    path: "/user/findNearbyDoctors",
+    method: "GET",
+    noAuth: false,
+  },
 };

@@ -15,3 +15,15 @@ export const getCurrentUser = () => {
 export const uploadImage = (form) => {
   return fireRequest("uploadImage", [], form, "", true);
 };
+
+export const getHealthDetails = () => {
+  return fireRequest("getHealthDetails");
+};
+
+export const addHealthDetails = (form) => {
+  return fireRequest("addHealthDetails", [], form);
+};
+
+export const findNearbyDoctors = () => {
+  return fireRequest("findNearbyDoctors");
+};
