@@ -1,57 +1,57 @@
 .loader :before {
-    content: "";
-    display: block;
+  content: "";
+  display: block;
 }
 .circular {
-    animation: rotate 2s linear infinite;
-    transform-origin: center center;
-    margin: auto;
+  animation: rotate 2s linear infinite;
+  transform-origin: center center;
+  margin: auto;
 }
 
 .path {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-    animation: dash 1.2s ease-in-out infinite, color 6s ease-in-out infinite;
-    stroke-linecap: round;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.2s ease-in-out infinite, color 6s ease-in-out infinite;
+  stroke-linecap: round;
 }
 
 @keyframes rotate {
-    100% {
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes dash {
-    0% {
-        stroke-dasharray: 1, 200;
-        stroke-dashoffset: 0;
-    }
-    50% {
-        stroke-dasharray: 89, 200;
-        stroke-dashoffset: -35px;
-    }
-    100% {
-        stroke-dasharray: 89, 200;
-        stroke-dashoffset: -124px;
-    }
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
 }
 
 @keyframes color {
-    100%,
-    0% {
-        stroke: #c20000;
-    }
-    25% {
-        stroke: #e4d500;
-    }
-    50% {
-        stroke: #c20000;
-    }
-    75% {
-        stroke: #e4d500;
-    }
+  100%,
+  0% {
+    stroke: #c20000;
+  }
+  25% {
+    stroke: #e4d500;
+  }
+  50% {
+    stroke: #c20000;
+  }
+  75% {
+    stroke: #e4d500;
+  }
 }
 
 body {
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
