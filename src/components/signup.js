@@ -96,6 +96,7 @@ const Signup = () => {
                   placeholder="FirstName"
                   value={form.firstName}
                   onChange={handleChange}
+                  autocomplete="off"
                 />
               </div>
               <div className="mb-4">
@@ -111,6 +112,7 @@ const Signup = () => {
                   name="lastName"
                   type="text"
                   placeholder="lastName"
+                  autocomplete="off"
                   value={form.lastName}
                   onChange={handleChange}
                 />
@@ -127,6 +129,7 @@ const Signup = () => {
                   id="email"
                   name="email"
                   type="text"
+                  autocomplete="off"
                   placeholder="Email"
                   value={form.email}
                   onChange={handleChange}
@@ -147,6 +150,7 @@ const Signup = () => {
                   value={form.password}
                   onChange={handleChange}
                   placeholder="******************"
+                  autocomplete="off"
                 />
                 <p className="text-xs italic text-red-500">{formError}</p>
               </div>
@@ -165,6 +169,7 @@ const Signup = () => {
                   value={form.confirmPassword}
                   onChange={handleChange}
                   placeholder="******************"
+                  autocomplete="off"
                 />
                 <p className="text-xs italic text-red-500">{formError}</p>
               </div>
