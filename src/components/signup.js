@@ -201,7 +201,7 @@ const Signup = () => {
               <div className="text-center">
                 <a
                   className="inline-block text-sm align-baseline text-black-500 hover:text-blue-800"
-                  href="./register.html"
+                  href="/login"
                 >
                   Login to Account!
                 </a>
