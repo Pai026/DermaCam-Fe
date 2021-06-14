@@ -9,7 +9,7 @@ const Signup = () => {
     lastName: "",
     email: "",
     lat: "10.027760",
-    long: "76.275047",
+    lon: "76.275047",
     password: "",
     confirmPassword: "",
   };
